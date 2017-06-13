@@ -1,4 +1,4 @@
-function[KPCTHK]=general_calculation(name,contract,isnear,strat,digit)
+function[KPCTHK]=general_calculation(name,contract,isnear,digit)
 
 global K1;
 global K2;
@@ -61,7 +61,8 @@ else
     ct = ['back1',contract];
 end
 
-[opn,cls,mu,s1,s2,t,w] = calc_KPC(data(idx,:),parameters(name,K1),parameters(name,K2),lag,weight,parameters(name,c), isnear);
+rowpos = evalin('base',name);
+[opn,cls,mu,s1,s2,t,w] = calc_KPC(data(idx,:),parameters(rowpos,K1),parameters(rowpos,K2),lag,weight,parameters(rowpos,c), isnear);
 temp = roundall([opn,cls,mu,s1,s2,t],digit);
 [opn,cls,mu,s1,s2,t] = temp{:};
 
@@ -69,7 +70,7 @@ if isnear  % 只有近月才计算次近月，远月合约不必
     if delta<= 12 % 计算次近月，采用与近月相同的参数
         idx = eval(['idx',contract,'_near2']);
         data = eval(['data',contract,'_near2']);
-        [opnc,clsc,muc,s1c,s2c,tc,wc] = calc_KPC(data(idx,:),parameters(name,K1),parameters(name,K2),lag,weight,parameters(name,c), isnear);
+        [opnc,clsc,muc,s1c,s2c,tc,wc] = calc_KPC(data(idx,:),parameters(rowpos,K1),parameters(rowpos,K2),lag,weight,parameters(rowpos,c), isnear);
     else
         [opnc,clsc,muc,s1c,s2c,tc,wc] = deal(0);
     end
@@ -81,8 +82,8 @@ else
     nextct = 0;
 end
 
-names = {'opn','cls','dt','ct','chgdt','mu','s1','s2','delta','p1','p2','p3','nxtct','nxtopn','nxtcls','nxtmu','trdtypes'};
-KPCTHK = table(opn,cls,{tommorrow},{eval([ct,'(1:6)'])},{deliv},mu,s1,s2,t,parameters(name,K1),parameters(name,K2),w,nextct,opnc,clsc,muc,{strat},'VariableNames',names);
+varnames = {'opn','cls','dt','ct','chgdt','mu','s1','s2','delta','p1','p2','p3','nxtct','nxtopn','nxtcls','nxtmu','trdtypes'};
+KPCTHK = table(opn,cls,{tommorrow},{eval([ct,'(1:6)'])},{deliv},mu,s1,s2,t,parameters(rowpos,K1),parameters(rowpos,K2),w,nextct,opnc,clsc,muc,{name},'Variablenames',varnames);
 
 
 
