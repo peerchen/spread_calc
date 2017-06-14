@@ -253,7 +253,7 @@ for currdt = 1:(dayslen-1)
         
         assignin('base',name,dumi);
         kpcmx = general_calculation(name,contp,isnear,digit);
-        KPCTHK = [kpcmx;KPCTHK];
+        KPCTHK = [KPCTHK;kpcmx];
 %     KPCTHKxh2 = general_calculation(xhzs2,'IC',1,'IC_Long_1',digit);
 %     KPCTHKjyif = general_calculation(jyIF,'IF',1,'IF_Hedge_1',digit);
 %     KPCTHKjyih = general_calculation(jyIH,'IH',1,'IH_Hedge_1',digit);
