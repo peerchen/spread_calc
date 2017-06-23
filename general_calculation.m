@@ -82,8 +82,8 @@ else
     nextct = 0;
 end
 
-varnames = {'opn','cls','dt','ct','chgdt','mu','s1','s2','delta','p1','p2','p3','nxtct','nxtopn','nxtcls','nxtmu','trdtypes'};
-KPCTHK = table(opn,cls,{tommorrow},{eval([ct,'(1:6)'])},{deliv},mu,s1,s2,t,parameters(rowpos,K1),parameters(rowpos,K2),w,nextct,opnc,clsc,muc,{name},'Variablenames',varnames);
+varnames = {'opn','cls','dt','ct','chgdt','mu','s1','s2','delta','p1','p2','p3','nxtct','nxtopn','nxtcls','nxtmu','nxts1','nxts2','nxtdelta','trdtypes'};
+KPCTHK = table(opn,cls,{tommorrow},{eval([ct,'(1:6)'])},{deliv},mu,s1,s2,t,parameters(rowpos,K1),parameters(rowpos,K2),w,nextct,opnc,clsc,muc,s1c,s2c,tc,{name},'Variablenames',varnames);
 
 
 

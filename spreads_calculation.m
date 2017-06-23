@@ -253,33 +253,7 @@ for currdt = 1:(dayslen-1)
         
         assignin('base',name,dumi);
         kpcmx = general_calculation(name,contp,isnear,digit);
-        KPCTHK = [KPCTHK;kpcmx];
-%     KPCTHKxh2 = general_calculation(xhzs2,'IC',1,'IC_Long_1',digit);
-%     KPCTHKjyif = general_calculation(jyIF,'IF',1,'IF_Hedge_1',digit);
-%     KPCTHKjyih = general_calculation(jyIH,'IH',1,'IH_Hedge_1',digit);
-%     % 对冲远月 1 挡
-%     KPCTHKyyif = general_calculation(yyIF,'IF',0,'IFy_Hedge_1',digit);
-%     KPCTHKyyic = general_calculation(yyIC,'IC',0,'ICy_Hedge_1',digit);
-%     KPCTHKyyih = general_calculation(yyIH,'IH',0,'IHy_Hedge_1',digit);
-%     % 对冲近月 IC 1\3\4\6\7\8\档
-%     KPCTHKalIC1 = general_calculation(alIC1,'IC',1,'IC_Hedge_1',digit);
-%     KPCTHKalIC3 = general_calculation(alIC3,'IC',1,'IC_Hedge_3',digit);
-%     KPCTHKalIC4 = general_calculation(alIC4,'IC',1,'IC_Hedge_4',digit);
-%     KPCTHKalIC6 = general_calculation(alIC6,'IC',1,'IC_Hedge_6',digit);
-%     KPCTHKalIC7 = general_calculation(alIC7,'IC',1,'IC_Hedge_7',digit);
-%     KPCTHKalIC8 = general_calculation(alIC8,'IC',1,'IC_Hedge_8',digit);
-%     % 择时近月 IC 1\3\5\10档
-%     KPCTHKzsIC1 = general_calculation(zsIC1,'IC',1,'IC_Long_1',digit);
-%     KPCTHKzsIC3 = general_calculation(zsIC3,'IC',1,'IC_Long_3',digit);
-%     KPCTHKzsIC5 = general_calculation(zsIC5,'IC',1,'IC_Long_5',digit);
-%     KPCTHKzsIC10 = general_calculation(zsIC10,'IC',1,'IC_Long_10',digit);
-%     %  bq3 alpha temp
-%     KPCTHKalBQ3 = general_calculation(alBQ3,'IC',1,'IC_Hedge_1_temp',digit);
-    
-%     KPCTHK = [KPCTHKalIC1;KPCTHKalIC3;KPCTHKalIC4;KPCTHKalIC6;KPCTHKalIC7;KPCTHKalIC8;...
-%               KPCTHKzsIC1;KPCTHKzsIC3;KPCTHKzsIC5;KPCTHKzsIC10;...
-%               KPCTHKxh2;KPCTHKjyif;KPCTHKjyih;KPCTHKyyif;KPCTHKyyic;KPCTHKyyih;KPCTHKalBQ3];
-    
+        KPCTHK = [KPCTHK;kpcmx];   
     end
           
     if (dayslen>=3 && currdt>1) || (dayslen==2 && currdt==1) % 避免输出已经计算过的结果
@@ -295,52 +269,29 @@ for currdt = 1:(dayslen-1)
     writetable(KPCTHK(Back2_IC_Hedge_Levels1_01,:),'期货远月开平仓门限\IC_KPCTHK.txt','WriteVariableNames',0);
     writetable(KPCTHK(Back2_IH_Hedge_Levels1_01,:),'期货远月开平仓门限\IH_KPCTHK.txt','WriteVariableNames',0);
     
-    writetable(KPCTHK(Near1_IC_Long_Levels1_01,:) ,'产品推送开平仓门限\BQ1ICLong_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Long_Levels10_01,:) ,'产品推送开平仓门限\BQ1ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\BQ2ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\JQ1ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\HJ1ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\GD2ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\LS1ICLong_KPCMX.txt','WriteVariableNames',0);
     writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\BQ3ICLong_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Long_Levels10_01,:),'产品推送开平仓门限\MS1ICLong_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IF_Long_Levels10_01,:) ,'产品推送开平仓门限\JQ1IFLong_KPCMX.txt','WriteVariableNames',0);
     
-    writetable(KPCTHK(Near1_IC_Hedge_Levels1_01,:),'产品推送开平仓门限\BQ1ICHedge_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels4_01,:),'产品推送开平仓门限\BQ2ICHedge_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels4_01,:),'产品推送开平仓门限\GD2ICHedge_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels6_01,:),'产品推送开平仓门限\XY7ICHedge_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels8_01,:),'产品推送开平仓门限\LS1ICHedge_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels8_01,:),'产品推送开平仓门限\XD9ICCommon_KPCMX.txt','WriteVariableNames',0);
-    writetable(KPCTHK(Near1_IC_Hedge_Levels1_02,:) ,'产品推送开平仓门限\BQ3ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\BQ1ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\BQ2ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\GD2ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\XY7ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\LS1ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:),'产品推送开平仓门限\XD9ICCommon_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Hedge_Levels10_01,:) ,'产品推送开平仓门限\BQ3ICHedge_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Back2_IC_Hedge_Levels1_01,:) ,'产品推送开平仓门限\GD2yyICHedge_KPCMX.txt','WriteVariableNames',0);
     
-%     writetable(KPCTHKzsIC1,'现货择时开平仓门限\IC_XHZS.txt','WriteVariableNames',0);
-%     writetable(KPCTHKxh2,'现货择时开平仓门限2\IC_XHZS.txt','WriteVariableNames',0);
-%     writetable(KPCTHKjyif,'期货近月开平仓门限\IF_KPCTHK.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC1,'期货近月开平仓门限\IC_KPCTHK.txt','WriteVariableNames',0);
-%     writetable(KPCTHKjyih,'期货近月开平仓门限\IH_KPCTHK.txt','WriteVariableNames',0);
-%     writetable(KPCTHKyyif,'期货远月开平仓门限\IF_KPCTHK.txt','WriteVariableNames',0);
-%     writetable(KPCTHKyyic,'期货远月开平仓门限\IC_KPCTHK.txt','WriteVariableNames',0);
-%     writetable(KPCTHKyyih,'期货远月开平仓门限\IH_KPCTHK.txt','WriteVariableNames',0);
-%     
-%     writetable(KPCTHKzsIC1 ,'产品推送开平仓门限\BQ1ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\BQ2ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\JQ1ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\HJ1ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\GD2ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC5,'产品推送开平仓门限\HJ1ICLongTest_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\LS1ICLong_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKzsIC10,'产品推送开平仓门限\BQ3ICLong_KPCMX.txt','WriteVariableNames',0);
-%     
-%     writetable(KPCTHKalIC1,'产品推送开平仓门限\BQ1ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC4 ,'产品推送开平仓门限\BQ2ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC3 ,'产品推送开平仓门限\HJ1ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC3 ,'产品推送开平仓门限\HJ1ICHedgeTest_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC4 ,'产品推送开平仓门限\GD2ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC6,'产品推送开平仓门限\XY7ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC8,'产品推送开平仓门限\LS1ICHedge_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalIC8,'产品推送开平仓门限\XD9ICCommon_KPCMX.txt','WriteVariableNames',0);
-%     writetable(KPCTHKalBQ3 ,'产品推送开平仓门限\BQ3ICHedge_KPCMX.txt','WriteVariableNames',0);
+    % for test
+    writetable(KPCTHK(Near1_IC_Long_Levels10_01,:) ,'产品推送开平仓门限\HJ1ICLongTest_KPCMX.txt','WriteVariableNames',0);
+    writetable(KPCTHK(Near1_IC_Long_Levels10_01,:) ,'产品推送开平仓门限\HJ1ICHedgeTest_KPCMX.txt','WriteVariableNames',0);
     
-    
-
     writetable(KPCTHK,['KPCTHK_history\KPCTHK_' tommorrow '_WJP.csv'],'WriteVariableNames',1);
     
     last_updt = currentdate;

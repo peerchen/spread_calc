@@ -10,8 +10,8 @@ calc_delta=ttm(end)-1;
 dif=data(:,futures)./data(:,underlying)-1;
 len=length(dif);
 
-days=find([1;data(1:(end-1),time)>data(2:end,time)]);  % start of days
-if length(days)>=lag    %calculate with at least lag number of days
+days=find([1;data(1:(end-1),time)>data(2:end,time)]);
+if length(days)>=lag
     T=ttm/20;
     mu=mean(dif./T);
     sigma1=std(dif./T);

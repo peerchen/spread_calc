@@ -2,7 +2,7 @@ function[processeddata]=OpenNdata_extract_min(startdate,starttime,enddate,endtim
 w=windmatlab;
 startdatetime=strcat(startdate,32,starttime);
 enddatetime=strcat(enddate,32,endtime);
-[data,codes,fields,times,errorid,reqid]=w.wsi(contract,'open,high,low,close,volume,amt',startdatetime,enddatetime);
+[data,~,~,times,~,~]=w.wsi(contract,'open,high,low,close,volume,amt',startdatetime,enddatetime);
 
 years=year(times);
 months=month(times);
