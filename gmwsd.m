@@ -31,11 +31,11 @@ if enddatenum>=todaydatenum %请求取今日数据
         endtime = '16:00:00';
         head = [thedate ' ' starttime];
         tail = [thedate ' ' endtime];
-        tickvalstr = strrep(valstr,'close',',last_price');
+        tickvalstr = strrep(valstr,'close','last_price');
         tickvalstr = strrep(tickvalstr,'amount','cum_amount');
         tickvalstr = strrep(tickvalstr,'volume','cum_volume');
-        todaydata = gm.GetTicks(code,tickvalstr,head,tail);
-        todaydata = array2table(table2array(todaydata(end,:)),'VariableNames',strsplit(valstr,','));
+        todaydata = gm.GetTicks(code,head,tail);
+        todaydata = cell2table(table2cell(todaydata(end,strsplit(tickvalstr,','))),'VariableNames',strsplit(valstr,','));
     else                    %收盘前请求当日数据，将返回前一日结果
         todaydata = gm.GetLastNDailyBars(code,1,thedate);
         todaydata = todaydata(:,strsplit(valstr,','));
