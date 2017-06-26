@@ -93,15 +93,15 @@ for dumi=1:length(indices)
             fprintf(logid,'%s\r\n',strcat('openN min underlying data updated for',indices{dumi}));
             
             % daily data
-%             day_underlying=OpenNdata_extract_day(startdate,enddate,evalin('base',strcat('contract_',indices{dumi})));
-%             xxfid_day=fopen(strcat(openNplace,'concatenated_data\现货数据\',indices{dumi},'xx_day.csv'),'a');
-%             [m,n]=size(day_underlying);
-%             for row=1:m
-%                 fprintf(xxfid_day,'%d,%f,%f,%f,%f\n',day_underlying(row,:));
-%             end
-%             fclose(xxfid_day);
-%             display('openN daily underlying data updated');
-%             fprintf(logid,'%s\r\n',strcat('openN daily underlying data updated for',indices{dumi}));
+            day_underlying=OpenNdata_extract_day(startdate,enddate,evalin('base',strcat('contract_',indices{dumi})));
+            xxfid_day=fopen(strcat(openNplace,'concatenated_data\现货数据\',indices{dumi},'xx_day.csv'),'a');
+            [m,n]=size(day_underlying);
+            for row=1:m
+                fprintf(xxfid_day,'%d,%f,%f,%f,%f\n',day_underlying(row,:));
+            end
+            fclose(xxfid_day);
+            display('openN daily underlying data updated');
+            fprintf(logid,'%s\r\n',strcat('openN daily underlying data updated for',indices{dumi}));
             
             % update the log
             timenow=getTimeNow();
@@ -241,15 +241,15 @@ for enddt=2:length(datelist)
                     fprintf(logid,'%s\r\n',strcat('momentum min futures data updated with contract:',fut_contract));
                     
                     % daily data
-%                     day_futures=OpenNdata_extract_day(startdate,enddate,fut_contract);
-%                     qhfid_day=fopen(strcat(momentumplace,'momentum data\predeliv',indices{dumj},'_day.csv'),'a');
-%                     [m,n]=size(day_futures);
-%                     for row=1:m
-%                         fprintf(qhfid_day,'%d,%f,%f,%f,%f\n',day_futures(row,:));
-%                     end
-%                     fclose(qhfid_day);
-%                     display(strcat('momentum daily futures data updated with contract:',fut_contract));
-%                     fprintf(logid,'%s\r\n',strcat('momentum daily futures data updated with contract:',fut_contract));
+                    day_futures=OpenNdata_extract_day(startdate,enddate,fut_contract);
+                    qhfid_day=fopen(strcat(momentumplace,'momentum data\predeliv',indices{dumj},'_day.csv'),'a');
+                    [m,n]=size(day_futures);
+                    for row=1:m
+                        fprintf(qhfid_day,'%d,%f,%f,%f,%f\n',day_futures(row,:));
+                    end
+                    fclose(qhfid_day);
+                    display(strcat('momentum daily futures data updated with contract:',fut_contract));
+                    fprintf(logid,'%s\r\n',strcat('momentum daily futures data updated with contract:',fut_contract));
                 end
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 if update_openN
@@ -276,15 +276,15 @@ for enddt=2:length(datelist)
                         fprintf(logid,'%s\r\n',strcat('openN min futures data updated with contract:',fut_contract));
                         
                         % daily data
-%                         day_futures=OpenNdata_extract_day(startdate,enddate,fut_contract);
-%                         qhfid_day=fopen(strcat(openNplace,'concatenated_data\',fileplace,indices{dumj},'_day.csv'),'a');
-%                         [m,n]=size(day_futures);
-%                         for row=1:m
-%                             fprintf(qhfid_day,'%d,%f,%f,%f,%f\n',day_futures(row,:));
-%                         end
-%                         fclose(qhfid_day);
-%                         display(strcat('openN daily futures data updated with contract:',fut_contract));
-%                         fprintf(logid,'%s\r\n',strcat('openN daily futures data updated with contract:',fut_contract));
+                        day_futures=OpenNdata_extract_day(startdate,enddate,fut_contract);
+                        qhfid_day=fopen(strcat(openNplace,'concatenated_data\',fileplace,indices{dumj},'_day.csv'),'a');
+                        [m,n]=size(day_futures);
+                        for row=1:m
+                            fprintf(qhfid_day,'%d,%f,%f,%f,%f\n',day_futures(row,:));
+                        end
+                        fclose(qhfid_day);
+                        display(strcat('openN daily futures data updated with contract:',fut_contract));
+                        fprintf(logid,'%s\r\n',strcat('openN daily futures data updated with contract:',fut_contract));
                         
                         % update the log
                         timenow=getTimeNow();
