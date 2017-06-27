@@ -28,7 +28,7 @@ if enddatenum>=todaydatenum %请求取今日数据
     nowtime = clock;
     if nowtime(4)*100+nowtime(5)>1500  % 收盘后请求当日数据，根据tick数据构建     
         starttime = '15:00:00';
-        endtime = '16:00:00';
+        endtime = '17:00:00';
         head = [thedate ' ' starttime];
         tail = [thedate ' ' endtime];
         tickvalstr = strrep(valstr,'close','last_price');
